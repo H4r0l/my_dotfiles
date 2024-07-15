@@ -8,3 +8,5 @@
   | Neovim (Code Editor)
   | Kitty (Terminal)
   | zsh & oh-my-zsh (Shell with some other stuff)
+
+![image](https://github.com/user-attachments/assets/33f50f74-91a9-437a-a514-2c9844cc6f8e)
