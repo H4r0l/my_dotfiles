@@ -1,0 +1,4 @@
+# BEGIN_KITTY_THEME
+# Catppuccin Kitty Frappé
+include current-theme.conf
+# END_KITTY_THEME
