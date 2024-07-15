@@ -1,0 +1,77 @@
+* {
+    font-size: 14px;
+    font-family: "JetBrains Nerd Font";
+    font-weight: bold;
+    padding: 1px;
+}
+
+window#waybar {
+    background: #005b5b;
+    color: #ffffff;
+}
+
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#memory,
+#cpu,
+
+#battery,
+#tray,
+#clipboard,
+#keyboard-state,
+#keyboard-state label,
+#keyboard-state label.locked,
+#keyboard-state label.numlock,
+#keyboard-state label.numlock.locked,
+#keyboard-state label.capslock,
+#keyboard-state label.capslock.locked,
+#keyboard-state label.scrolllock,
+#keyboard-state label.scrolllock.locked,
+#custom-weather,
+#temperature,
+#scratchpad,
+#updates,
+#disk {
+    background: #151515;
+    color: teal;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+#calendar,
+#network {
+    background: #151515;
+    color: #7ba3a4;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+#custom-clipboard {
+    background-color: #151515;
+    color: #5f9c86;
+    border-radius: 3px;
+}
+
+#window {
+    font-family: FiraCode Nerd Font;
+    color: #151515;
+    padding-left: 5px;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    color: #5f9c86;
+    border: 1px solid #151515;
+    border-radius: 3px;
+}
+
+#workspaces button:hover,
+#workspaces button.focused {
+    background: #151515;
+    color: teal;
+    border: 1px solid #3a3a3a;
+    border-radius: 3px;
+}
