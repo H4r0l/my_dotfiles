@@ -1,0 +1,13 @@
+.vertigo-layout-box {
+  // background-color: $base00;
+  background-color: $shade10;
+  font-family: Phosphor, Dosis, sans-serif;
+  padding: 0.8em 0.8em 0 0.8em;
+}
+
+@import "state";
+@import "info";
+@import "node";
+@import "override";
+
+// vim:ft=scss
