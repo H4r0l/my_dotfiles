@@ -1,6 +1,6 @@
 * {
-    padding: 1px 2px;
-    margin: 0 1px;
+    padding: 1px 1px;
+    margin: 0 2px;
 }
 
 window#waybar {
@@ -34,11 +34,12 @@ window#waybar {
     background: #3d464f;
     color: #85c2ff;
     padding: 0 2px;
-    border-radius: 3px;
+    border-radius: 8px;
     font-size: 12px;
     font-family: "FiraCode Nerd Font";
     font-weight: bold;
 }
+
 
 #custom-clipboard {
     background-color: #3d464f;
@@ -53,6 +54,11 @@ window#waybar {
     font-style: italic;
     color: #3d646a;
     padding-left: 5px;
+    font-size: 16px;
+}
+
+#window:hover {
+    color: white;
 
 }
 
@@ -69,7 +75,6 @@ window#waybar {
 #workspaces button:hover,
 #workspaces button.focused {
     background: #151515;
-    color: teal;
-    border: 1px solid #3a3a3a;
-    border-radius: 3px;
+    color: white;
+    border-radius: 8px;
 }

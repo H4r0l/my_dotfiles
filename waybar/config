@@ -53,9 +53,9 @@
         "active-only": false
     },
 	"clock#3": {
-		"format": "{:%a %d-%m | %H:%M}",
+		"format": " {:%a %d-%m | %H:%M} ",
 		"tooltip": true,
-  	"tooltip-format": "<tt><big>{calendar}</big>{}</tt>"
+  	"tooltip-format": " <tt><big>{calendar}</big>{}</tt> "
 	},
 	"pulseaudio": {
 		"format": " {icon}  {volume:2}% {format_source} ",
