@@ -7,9 +7,17 @@ window#waybar {
     background: rgba(12, 12, 12, 0.0);
 }
 
-#clock.1,
-#clock.2,
-#clock.3,
+#clock.3 {
+    font-family: VictorMono Nerd Font;
+    background: #3d464f;
+    color: #85c2ff;
+    padding: 0 2px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/*Might change to another clock preset later*/
 #pulseaudio,
 #memory,
 #cpu,
@@ -17,15 +25,6 @@ window#waybar {
 #battery,
 #tray,
 #clipboard,
-#keyboard-state,
-#keyboard-state label,
-#keyboard-state label.locked,
-#keyboard-state label.numlock,
-#keyboard-state label.numlock.locked,
-#keyboard-state label.capslock,
-#keyboard-state label.capslock.locked,
-#keyboard-state label.scrolllock,
-#keyboard-state label.scrolllock.locked,
 #custom-weather,
 #scratchpad,
 #updates,
@@ -36,17 +35,11 @@ window#waybar {
     padding: 0 2px;
     border-radius: 8px;
     font-size: 12px;
-    font-family: "FiraCode Nerd Font";
     font-weight: bold;
+    font-family: "FiraCode Nerd Font";
 }
 
-
-#custom-clipboard {
-    background-color: #3d464f;
-    color: #85c2ff;
-    border-radius: 3px;
-    margin-right: 8px;
-}
+/*Deleted custom clipboard*/
 
 #window {
     font-family: VictorMono Nerd Font;
@@ -55,11 +48,12 @@ window#waybar {
     color: #3d646a;
     padding-left: 5px;
     font-size: 16px;
+    border-radius: 10px;
 }
 
 #window:hover {
     color: white;
-
+    background-color: #3d646a;
 }
 
 #workspaces button {
@@ -68,13 +62,22 @@ window#waybar {
     border-radius: 3px;
 }
 
-#workspaces button:active {
-    background: #3d464f;
+#workspaces button:hover,
+#workspaces button.active {
+    background: #3d646a;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+    transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+    transition-duration: 300ms;
+    transition-property: background-color, font-size;
 }
 
-#workspaces button:hover,
-#workspaces button.focused {
-    background: #151515;
+#workspaces button.empty {
+    background: transparent;
     color: white;
-    border-radius: 8px;
+    border-width: 1px;
+    border-radius: 6px;
+    border-color: white;
+    padding: 0 4px;
 }

@@ -20,12 +20,6 @@
 		"network",
         "custom/wlogout"
 	],
- "custom/clipboard": {
-  "format": "{}   ",
-	"tooltip":true,
-  "on-click": "cliphist list | wofi -d -p | cliphist decode | wl-copy",
-	"on-click-right": "cliphist wipe",
-  "interval": 5},
 	"tray": {
 		"icon-size": 15
 	},
@@ -71,7 +65,7 @@
 			]
 		},
 		"scroll-step": 5,
-		"on-click": "pamixer -t","on-click-right": "pavucontrol"
+		"on-click": "pavucontrol"
 	},
 	"memory": {
 		"interval": 5,

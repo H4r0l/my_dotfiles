@@ -1,79 +1,101 @@
-    "hyprland/window": {
-        "format": "<span foreground=\"#A7C080\"> </span> {}",
-        "max-length": 100
+{
+    "layer": "top",
+    "height": 0,
+    "position": "top",
+    "modules-left": [
+        "custom/clipboard",
+        "hyprland/workspaces",
+        "hyprland/window",
+        "keyboard-state"
+    ],
+    "modules-center": [
+        "tray",
+        "clock#3",
+        "custom/weather"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "network",
+        "custom/wlogout"
+    ],
+    "custom/clipboard": {
+        "format": "{}   ",
+        "tooltip": true,
+        "on-click": "cliphist list | wofi -d -p | cliphist decode | wl-copy",
+        "on-click-right": "cliphist wipe",
+        "interval": 5
     },
-    "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%a, %d. %b %Y - %H:%M}"
+    "tray": {
+        "icon-size": 15
     },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "<span foreground=\"#A7C080\">{icon}</span> {percent}% ",
-        "format-icons": [
-            "",
-            ""
-        ],
-        "on-click": "pkill -USR1 gammastep || gammastep",
-        "tooltip-format": "Brightness"
+    "custom/wlogout": {
+        "format": " ⏻  ",
+        "on-click": "wlogout",
+        "tooltip": false
     },
-    "pulseaudio/slider": {
-        "min": 0,
-        "max": 100,
-        "orientation": "horizontal"
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "I",
+            "2": "II",
+            "3": "III",
+            "4": "IV",
+            "5": "V",
+            "6": "VI",
+            "7": "VII",
+            "8": "VIII",
+            "9": "IX",
+            "10": "X"
+        },
+        "on-click": "activate",
+        "sort-by-number": true,
+        "active-only": false
+    },
+    "clock#3": {
+        "format": " {:%a %d-%m | %H:%M} ",
+        "tooltip": true,
+        "tooltip-format": " <tt><big>{calendar}</big>{}</tt> "
     },
     "pulseaudio": {
-        "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\">{icon}</span> {volume}% ",
-        "format-bluetooth": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\"></span> {volume}% ",
-        "format-muted": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\"></span> ",
+        "format": " {icon}  {volume:2}% {format_source} ",
+        "format-bluetooth": "{icon}  {volume}% ",
+        "format-muted": "MUTE",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
+            "headphones": "",
             "default": [
                 "",
                 ""
             ]
         },
-        "scroll-step": 1,
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "ignored-sinks": [
-            "Easy Effects Sink"
-        ]
-    },
-    "network": {
-        "format": "<span foreground=\"#3D484D\">|</span> {ifname}",
-        "format-wifi": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\"></span> {signalStrength}%",
-        "format-ethernet": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\">󰊗</span> {ipaddr}/{cidr}",
-        "format-disconnected": "",
-        "tooltip-format": "{ifname} via {gwaddr}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "{ifname}",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
-    },
-    "hyprland/language": {
-        "format": "<span foreground=\"#A7C080\">󰌌</span> {short} <span foreground=\"#3D484D\">|</span>"
-    },
-    "keyboard-state": {
-        "capslock": true,
-        "format": " <span foreground=\"#A7C080\">󰪛</span> {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-    "disk": {
-        "interval": 30,
-        "format": "<span foreground=\"#A7C080\" weight=\"bold\">/</span> {percentage_used}% ",
-        "path": "/"
-    },
-    "cpu": {
-        "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\" weight=\"bold\">CPU</span> {usage}% "
+        "scroll-step": 5,
+        "on-click": "pamixer -t",
+        "on-click-right": "pavucontrol"
     },
     "memory": {
-        "format": "<span foreground=\"#3D484D\">|</span> <span foreground=\"#A7C080\" weight=\"bold\">RAM</span> {}% "
+        "interval": 5,
+        "format": "  {}% "
     },
-    "custom/wlogout": {
-        "format": "⏻",
-        "on-click": "wlogout",
-        "tooltip": false
-    }
+    "cpu": {
+        "interval": 5,
+        "format": " 💻 {usage:2}% "
+    },
+    "network": {
+        "format-wifi": " ({signalStrength}%)   ",
+        "format-ethernet": " 📶 ",
+        "tooltip-format": "{gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "⚠ ",
+        "format-alt": "{ipaddr}"
+    },
+    "custom/weather": {
+        "format": " {} °",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar",
+        "return-type": "json"
+    },
 }
