@@ -6,17 +6,18 @@
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 -- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
--- Neovim Lua Config File by Arfan Zubi
--- SCRIPTS
+-- File: plugins/colorizer.lua
+-- Description: nvim-colorizer config
+-- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
+return { -- colorizer
+{
+    "norcalli/nvim-colorizer.lua",
+    config = function(_)
+        require("colorizer").setup()
 
--- Colorscheme
-cmd("colorscheme everforest")
-
--- Format on save (Commented out because Conform.nvim takes care of this)
---cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
-
--- Run ":so" after writing .zshrc
-cmd("autocmd BufWritePost ~/.zshrc so %")
-
--- Run "xrdb" after writing .Xresources
-cmd("autocmd BufWritePost ~/.Xresources !xrdb %")
+        -- execute colorizer as soon as possible
+        vim.defer_fn(function()
+            require("colorizer").attach_to_buffer(0)
+        end, 0)
+    end
+}}

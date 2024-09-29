@@ -6,56 +6,64 @@
 -- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 -- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
--- Neovim Lua Config File by Arfan Zubi
--- TREESITTER
-
-require("nvim-treesitter.configs").setup({
-    ensure_installed = {
-        "c",
-        "rust",
-        "lua",
-        "typescript",
-        "http",
-        "html",
-        "css",
-        "hjson",
-        "diff",
-        "bash",
-        "cmake",
-        "dot",
-        "javascript",
-        "java",
-        "latex",
-        "markdown",
-        "markdown_inline",
-        "php",
-        "python",
-        "regex",
-        "query",
-        "scss",
-        "sql",
-        "rasi",
-        "toml",
-        "vim",
-        "vimdoc",
-        "yaml",
-    },
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
-    -- Automatically install missing parsers when entering buffer
-    auto_install = true,
-    -- List of parsers to ignore installing (for "all")
-    ignore_install = {},
-    highlight = {
-        enable = true,
-        -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-        disable = function(lang, buf)
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-                return true
+-- File: plugins/treesitter.lua
+-- Description: nvim-treesitter configuration
+-- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
+return {{
+    -- Treesitter interface
+    "nvim-treesitter/nvim-treesitter",
+    version = false, -- last release is way too old and doesn"t work on Windows
+    build = ":TSUpdate",
+    dependencies = {{
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        lazy = true,
+        init = function()
+            -- PERF: no need to load the plugin, if we only need its queries for mini.ai
+            local plugin = require("lazy.core.config").spec.plugins["nvim-treesitter"]
+            local opts = require("lazy.core.plugin").values(plugin, "opts", false)
+            local enabled = false
+            if opts.textobjects then
+                for _, mod in ipairs({"move", "select", "swap", "lsp_interop"}) do
+                    if opts.textobjects[mod] and opts.textobjects[mod].enable then
+                        enabled = true
+                        break
+                    end
+                end
             end
-        end,
-        additional_vim_regex_highlighting = false,
+            if not enabled then
+                require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
+            end
+        end
+    }},
+    opts = {
+        -- A list of parser names, or "all"
+        ensure_installed = {"go", "python", "dockerfile", "json", "yaml", "markdown", "html", "scss", "css", "vim",
+                            "lua"},
+
+        highlight = {
+            enable = true,
+            use_languagetree = true
+        },
+        indent = {
+            enable = true
+        },
+        autotag = {
+            enable = true
+        },
+        context_commentstring = {
+            enable = true,
+            enable_autocmd = false
+        },
+        refactor = {
+            highlight_definitions = {
+                enable = true
+            },
+            highlight_current_scope = {
+                enable = false
+            }
+        }
     },
-})
+    config = function(_, opts)
+        require("nvim-treesitter.configs").setup(opts)
+    end
+}}

@@ -1,35 +1,24 @@
--- ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
--- ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
--- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
--- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
--- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
--- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
---
--- Neovim Lua Config File by Arfan Zubi
--- INIT FILE
+if vim.fn.has('nvim-0.8') == 0 then
+    error('Need Neovim 0.8+ in order to use this config')
+end
 
--- Variables
-opt = vim.opt
-g = vim.g
-kmap = vim.keymap
-cmd = vim.cmd
+for _, cmd in ipairs({"git", "rg", {"fd", "fdfind"}}) do
+    local name = type(cmd) == "string" and cmd or vim.inspect(cmd)
+    local commands = type(cmd) == "string" and {cmd} or cmd
+    ---@cast commands string[]
+    local found = false
 
--- Leader key
-g.mapleader = ","
--- Imports
+    for _, c in ipairs(commands) do
+        if vim.fn.executable(c) == 1 then
+            name = c
+            found = true
+        end
+    end
 
-require("core.lazy")                -- lazy.nvim plugin manager
-require("core.plugins")             -- Plugins
+    if not found then
+        error(("`%s` is not installed"):format(name))
+    end
+end
 
-require("core.settings")            -- Editor settings
-require("core.setups")              -- Setup of plugins
-require("core.mappings")            -- Mappings
-require("core.scripts")             -- Scripts
-
-require("plugins.lsp-config-setup") -- LSPconfig setup
-require("plugins.mason")            -- Mason LSP & DAP servers
-require("plugins.nvim-cmp")         -- Autocompletion
-require("plugins.treesitter")       -- Treesitter syntax highlighting
-require("plugins.conform")          -- Formatter
-require("plugins.gitsigns-config")  -- Gitsigns mappings
-require("nvim-tree-config")
+-- Load main config
+require("config")
