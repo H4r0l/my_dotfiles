@@ -3,7 +3,6 @@
 	"height":0,
 	"position": "top",
 	"modules-left": [
-        "custom/clipboard",
 		"hyprland/workspaces",
         "hyprland/window",
 		"keyboard-state",
@@ -15,8 +14,6 @@
 	],
 	"modules-right": [
 		"pulseaudio",
-		"cpu",
-		"memory",
 		"network",
         "custom/wlogout"
 	],
@@ -67,20 +64,12 @@
 		"scroll-step": 5,
 		"on-click": "pavucontrol"
 	},
-	"memory": {
-		"interval": 5,
-		"format": "  {}% "
-	},
-	"cpu": {
-		"interval": 5,
-		"format": " 💻 {usage:2}% "
-	},
   "network": {
 	"format-wifi": " ({signalStrength}%)   ",
 	"format-ethernet": " 📶 ",
 	"tooltip-format": "{gwaddr}",
 	"format-linked": "{ifname} (No IP) ",
-	"format-disconnected": "⚠ ",
+	"format-disconnected": "  ⚠  ",
 	"format-alt": "{ipaddr}"
 	},
 	"custom/weather": {

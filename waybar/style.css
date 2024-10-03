@@ -1,83 +1,63 @@
 * {
-    padding: 1px 1px;
-    margin: 0 2px;
+  padding: 1px 1px;
+  margin: 0 2px;
 }
 
 window#waybar {
-    background: rgba(12, 12, 12, 0.0);
-}
-
-#clock.3 {
-    font-family: VictorMono Nerd Font;
-    background: #3d464f;
-    color: #85c2ff;
-    padding: 0 2px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-style: italic;
+  background: rgba(12, 12, 12, 0);
 }
 
 /*Might change to another clock preset later*/
+
 #pulseaudio,
-#memory,
-#cpu,
-#custom-wlogout,
+#clock.3,
 #battery,
 #tray,
 #clipboard,
+#custom-wlogout,
 #custom-weather,
 #scratchpad,
 #updates,
 #calendar,
 #network {
-    background: #3d464f;
-    color: #85c2ff;
-    padding: 0 2px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: bold;
-    font-family: "FiraCode Nerd Font";
+  background: #3d464f;
+  color: white;
+  padding: 0 2px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: VictorMono Nerd Font;
+  font-style: italic;
 }
 
 /*Deleted custom clipboard*/
 
 #window {
-    font-family: VictorMono Nerd Font;
-    font-weight: bold;
-    font-style: italic;
-    color: #3d646a;
-    padding-left: 5px;
-    font-size: 16px;
-    border-radius: 10px;
-}
-
-#window:hover {
-    color: white;
-    background-color: #3d646a;
+  font-family: VictorMono Nerd Font;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+  padding-left: 5px;
+  font-size: 16px;
+  border-radius: 10px;
 }
 
 #workspaces button {
-    padding: 0 6px;
-    color: #85c2ff;
-    border-radius: 3px;
+  padding: 0 6px;
+  color: white;
+  border-radius: 3px;
 }
 
-#workspaces button:hover,
 #workspaces button.active {
-    background: #3d646a;
-    color: white;
-    font-size: 15px;
-    border-radius: 10px;
-    transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
-    transition-duration: 300ms;
-    transition-property: background-color, font-size;
+  background: #6d9ecf;
+  color: black;
+  font-size: 15px;
+  border-radius: 10px;
 }
 
 #workspaces button.empty {
-    background: transparent;
-    color: white;
-    border-width: 1px;
-    border-radius: 6px;
-    border-color: white;
-    padding: 0 4px;
+  background: rgba(109, 158, 207, 0.2);
+  color: white;
+  border-radius: 12px;
+  padding: 0 4px;
 }
